@@ -1,7 +1,8 @@
-import {Request, Response} from 'express';
+import {Response as ExpressResponse} from 'express';
+import {IRequest} from './IRequest';
 import {IResponse} from './IResponse';
 
-export const registerHandler = (app: any) => async (request: Request, response: Response) => {
+export const registerHandler = (app: any) => async (request: IRequest, response: ExpressResponse) => {
     try {
         const result: IResponse = await app(request);
         response.status(result.code).json(result.body);
